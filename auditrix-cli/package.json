@@ -1,0 +1,30 @@
+{
+  "name": "auditrix-cli",
+  "version": "1.0.0",
+  "description": "A CLI tool for AI-powered smart contract auditing using Gemini AI",
+  "main": "index.js",
+
+  "bin": {
+    "auditrix": "./index.js"
+  },
+
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "smart contract",
+    "audit",
+    "ai",
+    "gemini"
+  ],
+  "author": "Shreyans Tatiya",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.20.0",
+    "commander": "^12.1.0",
+    "inquirer": "^11.0.2",
+    "openai": "^4.65.0"
+  }
+}
