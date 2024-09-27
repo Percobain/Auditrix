@@ -2,14 +2,14 @@
   "name": "auditrix-cli",
   "version": "1.0.0",
   "description": "A CLI tool for AI-powered smart contract auditing using Gemini AI",
-  "main": "index.js",
+  "main": "index.mjs",
 
   "bin": {
-    "auditrix": "./index.js"
+    "auditrix": "./index.mjs"
   },
 
   "scripts": {
-    "start": "node index.js",
+    "start": "node index.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
