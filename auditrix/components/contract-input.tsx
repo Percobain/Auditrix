@@ -42,29 +42,42 @@ const CustomCodeEditor: React.FC<CustomCodeEditorProps> = ({
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      <ShootingStars /> 
-      <div className="relative w-full max-w-4xl mx-auto mb-20 z-10"> 
+      <ShootingStars />
+      <div className="relative w-full max-w-4xl mx-auto mb-20 z-10">
         <style>
           {`
-          .editor-scrollbar::-webkit-scrollbar {
+            .editor-scrollbar::-webkit-scrollbar {
               width: 12px;
-          }
-          .editor-scrollbar::-webkit-scrollbar-track {
+            }
+            .editor-scrollbar::-webkit-scrollbar-track {
               background: #2d3748;
-          }
-          .editor-scrollbar::-webkit-scrollbar-thumb {
+            }
+            .editor-scrollbar::-webkit-scrollbar-thumb {
               background-color: #4a5568;
               border-radius: 6px;
               border: 3px solid #2d3748;
-          }
-          .editor-scrollbar::-webkit-scrollbar-thumb:hover {
+            }
+            .editor-scrollbar::-webkit-scrollbar-thumb:hover {
               background-color: #718096;
-          }
+            }
+            
+            @media (max-width: 768px) { /* For mobile devices */
+              .custom-editor {
+                max-width: 90%;
+                height: 350px; /* Reduced height on mobile */
+              }
+
+              .button-panel {
+                width: 90%; /* Match the width of the editor */
+                margin: 0 auto; /* Center the button panel */
+                padding: 0 1rem 0.5rem; /* Adjust padding */
+              }
+            }
           `}
         </style>
         <div
-          className="border border-neutral-800 rounded-lg overflow-hidden bg-neutral-900 text-neutral-200"
-          style={{ height: "650px" }}
+          className="custom-editor border border-neutral-800 rounded-lg overflow-hidden bg-neutral-900 text-neutral-200 mx-auto"
+          style={{ height: "650px" }} // Original height for larger screens
         >
           <div className="h-full overflow-auto p-4 editor-scrollbar">
             <Editor
@@ -82,7 +95,7 @@ const CustomCodeEditor: React.FC<CustomCodeEditorProps> = ({
               }}
             />
           </div>
-          <div className="absolute bottom-0 left-0 right-0 p-3 bg-neutral-900 border-t border-neutral-800">
+          <div className="button-panel absolute bottom-0 left-0 right-0 p-3 bg-neutral-900 border-t border-neutral-800">
             <div className="flex justify-between items-center">
               <button
                 type="button"
@@ -106,7 +119,6 @@ const CustomCodeEditor: React.FC<CustomCodeEditorProps> = ({
         </div>
       </div>
     </div>
-    
   );
 };
 
