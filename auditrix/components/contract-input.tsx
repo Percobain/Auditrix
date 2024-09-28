@@ -5,7 +5,6 @@ import "prismjs/components/prism-solidity";
 import "prismjs/themes/prism-tomorrow.css";
 
 import { IconChecklist, IconPaperclip } from "@tabler/icons-react";
-import { animateValue } from "framer-motion";
 
 interface CustomCodeEditorProps {
     contract: string;
