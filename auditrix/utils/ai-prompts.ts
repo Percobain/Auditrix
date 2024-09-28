@@ -13,6 +13,9 @@ export const analyzeContract = async (
     setLoading(true);
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
     const prompt = `Your role and goal is to be an AI Smart Contract Auditor. Your job is to perform an audit on the given smart contract. Here is the smart contract: ${contract}.
+    
+    Ensure that your response is a valid JSON array. Do not include any additional text before or after the JSON array. 
+    Do not use any Markdown formatting (such as **, *, or #) in your response.
 
     Please provide the results in the following array format for easy front-end display:
     [
@@ -54,6 +57,8 @@ export const analyzeContract = async (
         "details": "Suggestions for improving the smart contract in terms of security, performance, and any other identified weaknesses."
       }
     ]
+    
+    
   
     Thank you.`;
 
