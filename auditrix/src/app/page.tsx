@@ -17,7 +17,7 @@ export default function Home() {
     console.log('call')
     setIsModalOpen(true);
     setLoading(true);
-    await analyzeContract(contract, setResults, setLoading, setIsModalOpen);
+    await analyzeContract(contract, setResults, setLoading);
   }
 
   return <main className="flex min-h-screen w-full flex-col items-center justify-between p-24">
