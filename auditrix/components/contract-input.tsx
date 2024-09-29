@@ -3,7 +3,7 @@ import Editor from "react-simple-code-editor";
 import Prism from "prismjs";
 import "prismjs/components/prism-solidity";
 import "prismjs/themes/prism-tomorrow.css";
-import { IconChecklist, IconPaperclip } from "@tabler/icons-react";
+import { IconChecklist, IconBrandGithub } from "@tabler/icons-react";
 import { ShootingStars } from "./ui/shooting-stars";
 
 interface CustomCodeEditorProps {
@@ -101,8 +101,9 @@ const CustomCodeEditor: React.FC<CustomCodeEditorProps> = ({
                 type="button"
                 className="text-neutral-400 hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md p-2"
                 aria-label="Attach File"
+                onClick={() => window.open("https://github.com/percobain", "_blank")}
               >
-                <IconPaperclip size={20} />
+                <IconBrandGithub size={24} />
               </button>
               <div className="flex space-x-2">
                 <button
