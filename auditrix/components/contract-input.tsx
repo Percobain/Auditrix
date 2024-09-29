@@ -87,6 +87,7 @@ const CustomCodeEditor: React.FC<CustomCodeEditorProps> = ({
               padding={15}
               textareaId="code-editor"
               textareaClassName="outline-none bg-transparent"
+              placeholder="Enter your Solidity contract here!"
               style={{
                 fontFamily: '"Fira Mono", monospace',
                 fontSize: 16,

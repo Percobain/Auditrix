@@ -18,10 +18,10 @@ const bounceAnimation = `
 export default function Header() {
   return (
     <WavyBackground className="flex flex-col justify-center items-center h-screen max-w-4xl mx-auto pb-20">
-      <p className="text-4xl md:text-4xl lg:text-7xl text-white font-bold inter-var text-center">
+      <p className="text-4xl md:text-4xl lg:text-7xl text-white font-bold inter-var text-center select-none">
         Auditrix, AI Smart Contract Auditor
       </p>
-      <p className="text-base md:text-2xl mt-4 text-white font-normal inter-var text-center">
+      <p className="text-base md:text-2xl mt-4 text-white font-normal inter-var text-center select-none">
         Leverage the power of AI to audit your smart contracts
       </p>
       <div className="absolute bottom-8 flex flex-col items-center gap-x-0.5">
