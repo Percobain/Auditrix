@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Dialog } from "@headlessui/react";
-import { IconChecklist, IconCircleCheck, IconGauge, IconChevronUp, IconChevronDown, IconTool } from "@tabler/icons-react";
+import { IconChecklist, IconCircleCheck, IconGauge, IconChevronUp, IconChevronDown } from "@tabler/icons-react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
@@ -62,6 +62,8 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
                                 <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">
                                     <h2>Audit Results</h2>
                                 </div>
+
+                                {/* Audit Report Section */}
                                 <div className="text-left">
                                     <h3 className="text-xl space-x-2 cursor-pointer flex items-center justify-between dark:text-gray-200 mb-4" onClick={() => toggleSection("auditReport")}>
                                         <div className="flex items-center space-x-2">
@@ -75,12 +77,15 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
                                         )}
                                     </h3>
                                     {expandedSection === "auditReport" && (
-                                        <p className="text-base text-gray-300">
-                                            {results.find((r: any) => r.section === "Audit Report").details}
-                                        </p>
+                                        <div className="max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-300 p-4">
+                                            <p className="text-base text-gray-300 break-words">
+                                                {results.find((r: any) => r.section === "Audit Report").details}
+                                            </p>
+                                        </div>
                                     )}
                                 </div>
 
+                                {/* Metric Scores Section */}
                                 <div className="text-left">
                                     <h3 className="text-xl space-x-2 cursor-pointer flex items-center justify-between dark:text-gray-200 mb-4" onClick={() => toggleSection("metricScores")}>
                                         <div className="flex items-center space-x-2">
@@ -123,6 +128,7 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
                                     )}
                                 </div>
 
+                                {/* Suggestions for Improvement Section */}
                                 <div className="text-left">
                                     <h3 className="text-xl space-x-2 cursor-pointer flex items-center justify-between dark:text-gray-200 mb-4" onClick={() => toggleSection("suggestions")}>
                                         <div className="flex items-center space-x-2">
@@ -136,17 +142,15 @@ const ResultsModal: React.FC<ResultsModalProps> = ({
                                         )}
                                     </h3>
                                     {expandedSection === "suggestions" && (
-                                        <>
-                                            <p className="text-base text-gray-300">
+                                        <div className="max-h-60 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-300 p-4">
+                                            <p className="text-base text-gray-300 break-words">
                                                 {results.find((r: any) => r.section === "Suggestions for Improvement").details}
                                             </p>
-                                            {/* <button className="mt-4 rounded-full inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition ease-in-out duration-150">
-                                                <IconTool size={20} className="mr-2"/>
-                                                Fix
-                                            </button> */}
-                                        </>
+                                        </div>
                                     )}
                                 </div>
+                                
+                                {/* Close Button */}
                                 <div className="flex justify-end">
                                     <button onClick={closeModal} className="text-blue-500 hover:text-blue-700">
                                         Close

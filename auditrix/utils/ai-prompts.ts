@@ -6,9 +6,8 @@ const genAI = new GoogleGenerativeAI(API_KEY!);
 
 export const analyzeContract = async (
     contract: string,
-    setResults: any,
-    setLoading: any,
-    auditSmartContract: any
+    setResults: (results: any) => void,
+    setLoading: (loading: boolean) => void
 ) => {
     setLoading(true);
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
@@ -58,16 +57,20 @@ export const analyzeContract = async (
       }
     ]
     
-    
-  
     Thank you.`;
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const auditResults = JSON.parse(response.text());
+    try {
+        const result = await model.generateContent(prompt);
+        const responseText = result.response.text();
+        const cleanResponse = responseText.replace(/[\*\#\`\_\-\**]/g, ''); // Remove Markdown characters
+        const auditResults = JSON.parse(cleanResponse);
 
-    setResults(auditResults);
-    setLoading(false);
+        setResults(auditResults);
+    } catch (error) {
+        console.error("Error analyzing contract:", error);
+    } finally {
+        setLoading(false);
+    }
 };
 
 export const fixIssues = async (
@@ -81,10 +84,15 @@ export const fixIssues = async (
 
     const prompt = `Here is the smart contract with the following issues: ${suggestions}. Please provide a fixed version of the contract:\n\n${contract}`;
 
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const fixedContract = response.text();
+    try {
+        const result = await model.generateContent(prompt);
+        const responseText = result.response.text();
+        const cleanResponse = responseText.replace(/[\*\#\`\_\-\**]/g, ''); // Remove Markdown characters
 
-    setContract(fixedContract);
-    setLoading(false);
-}
+        setContract(cleanResponse);
+    } catch (error) {
+        console.error("Error fixing contract issues:", error);
+    } finally {
+        setLoading(false);
+    }
+};
