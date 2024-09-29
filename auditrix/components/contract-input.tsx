@@ -41,7 +41,6 @@ const CustomCodeEditor: React.FC<CustomCodeEditorProps> = ({
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden p-20">
     <div className="relative w-full h-screen overflow-hidden">
       <ShootingStars />
       <div className="relative w-full max-w-4xl mx-auto z-10">
@@ -121,7 +120,6 @@ const CustomCodeEditor: React.FC<CustomCodeEditorProps> = ({
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };
